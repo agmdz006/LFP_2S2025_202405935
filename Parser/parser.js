@@ -1055,12 +1055,8 @@ procesarSentencias() {
 
 
 
-  /**
-   * Traduce un bucle while de Java a Python
-   * Formato Java: while (condicion) { ... }
-   * Formato Python: while condicion:
-   *     ...
-   */
+ //_______________________________________________________________________________________
+ //método que traduce estructuras while
   traducirWhile() {
     const whileToken = this.tokens[this.pos]
     this.pos++
@@ -1157,17 +1153,14 @@ procesarSentencias() {
     }
     this.pos++
   }
+//__________________________________________________________________________________
 
 
 
 
 
-
-  /**
-   * Traduce asignaciones de variables o incrementos/decrementos
-   * Formato Java: variable = expresion; o variable++; o variable--;
-   * Formato Python: variable = expresion o variable += 1 o variable -= 1
-   */
+ //____________________________________________________________________________________________
+ //método que traduce asignaciones o incrementos
   traducirAsignacionOIncremento() {
     const identificador = this.tokens[this.pos]
     this.pos++
@@ -1277,15 +1270,14 @@ procesarSentencias() {
       ),
     )
   }
+  //_____________________________________________________________________________________________
 
 
 
 
-  /**
-   * Traduce una línea dentro de un bloque (if, else, for, while)
-   * Determina el tipo de instrucción y llama al método apropiado
-   */
 
+//_______________________________________________________________________________________________
+//método que se encarga de traducir los comentarios
   traducirComentario() {
   const comentarioToken = this.tokens[this.pos]
 
@@ -1308,6 +1300,7 @@ procesarSentencias() {
 
   this.pos++
 }
+//__________________________________________________________________________
 
 
 
