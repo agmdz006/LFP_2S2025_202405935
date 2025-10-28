@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor Java a Python</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Encabezado principal -->
+    <header>
+        <div class="logo">
+            <h1>Traductor Java a Python</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Contenedor de mensajes -->
+        <div id="messages"></div>
+
+        <!-- Paneles de edición de código -->
+        <div class="editor-container">
+            <!-- Panel de código Java -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h2>Código Java</h2>
+                    <!-- Added open button next to save button -->
+                    <div>
+                        <button id="open-java-btn" class="btn-save"> Abrir</button>
+                        <button id="save-java-btn" class="btn-save"> Guardar Java</button>
+                    </div>
+                </div>
+                <textarea id="java-code" class="code-area" placeholder="// Escribe tu código Java aquí"></textarea>
+            </div>
+
+            <!-- Panel de código Python traducido -->
+            <div class="editor-panel">
+                <div class="panel-header">
+                    <h2>Python Traducido</h2>
+                    <!-- Added save button for Python code -->
+                    <button id="save-python-btn" class="btn-save">Guardar Python</button>
+                </div>
+                <textarea id="python-code" class="code-area" placeholder="# Aquí aparecerá el código Python traducido" readonly></textarea>
+            </div>
+        </div>
+
+        <!-- Botones de control -->
+        <div class="controls">
+            <div>
+                <button id="translate" class="btn btn-primary">Generar Traducción</button>
+                <button id="view-tokens-btn" class="btn btn-secondary">Ver Tokens</button>
+                <button id="clear-all-btn" class="clear-btn">Limpiar Todo</button>
+            </div>
+            <!-- Added 3 report generation buttons -->
+            <div>
+                <button id="reporte-tokens-btn" class="btn btn-secondary">Reporte HTML Tokens</button>
+                <button id="reporte-lexicos-btn" class="btn btn-secondary">Reporte HTML Errores Léxicos</button>
+                <button id="reporte-sintacticos-btn" class="btn btn-secondary">Reporte HTML Errores Sintácticos</button>
+            </div>
+        </div>
+
+        <!-- Barra de estado -->
+        <div class="status-bar">
+            <div>Estado: <span id="status-message">Listo para traducir</span></div>
+            <div>Tokens generados: <span id="tokens-count" class="tokens-count">0</span></div>
+        </div>
+
+        <!-- Contenedor de reportes con pestañas -->
+        <div class="report-container">
+            <!-- Pestañas de navegación -->
+            <div class="report-tabs">
+                <div class="tab active" data-tab="tokens">Tokens</div>
+                <div class="tab" data-tab="lexical-errors">Errores Léxicos</div>
+                <div class="tab" data-tab="syntax-errors">Errores Sintácticos</div>
+            </div>
+
+            <!-- Contenido de pestaña: Tokens -->
+            <div id="tokens-tab" class="tab-content active">
+                <h3>Reporte de Tokens</h3>
+                <table id="tokens-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Lexema</th>
+                            <th>Tipo</th>
+                            <th>Línea</th>
+                            <th>Columna</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tokens-body">
+                        <tr><td colspan="5" style="text-align: center;">No se han generado tokens</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contenido de pestaña: Errores Léxicos -->
+            <div id="lexical-errors-tab" class="tab-content">
+                <h3>Reporte de Errores Léxicos</h3>
+                <table id="lexical-errors-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Línea</th>
+                            <th>Columna</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lexical-errors-body">
+                        <tr><td colspan="5" style="text-align: center;">No hay errores léxicos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contenido de pestaña: Errores Sintácticos -->
+            <div id="syntax-errors-tab" class="tab-content">
+                <h3>Reporte de Errores Sintácticos</h3>
+                <table id="syntax-errors-table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Tipo</th>
+                            <th>Mensaje</th>
+                            <th>Línea</th>
+                            <th>Columna</th>
+                        </tr>
+                    </thead>
+                    <tbody id="syntax-errors-body">
+                        <tr><td colspan="5" style="text-align: center;">No hay errores sintácticos</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>Proyecto 2 - Lenguajes Formales y de Programación </p>
+    </footer>
+
+    <!-- Cargar scripts en orden: clases primero, luego main.js, luego app.js -->
+    <script src="Token/Token.js"></script>
+    <script src="Error/Error.js"></script>
+    <script src="Error/ErrorSin.js"></script>
+    <script src="Lexer/Lexer.js"></script>
+    <script src="Parser/Parser.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
